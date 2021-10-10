@@ -48,20 +48,19 @@ public class CircularDoubleList <T extends Comparable<T>> implements IListable<T
     }
    
     
-    public String print() {
-
-        Node thisOne = first;
-        String result = "";
-
-        do{
-            result += thisOne.showInformation() + "\n";
-            thisOne = thisOne.getNext();
-        }while (thisOne != first);
-
-        return result;
+    public void print(){
+        
+        Node print = first;
+        String cadena = " ";
+        
+        for(int i=0; i<10;i++){
+            System.out.println(print.getCar());          
+            print = print.getNext();
+       
+        }
+        
 
     }
-
 
     @Override
     public void add(T item) {
@@ -79,6 +78,8 @@ public class CircularDoubleList <T extends Comparable<T>> implements IListable<T
             last.setNext(first);
             first.setPreviuos(last);
         }
+    
+    
     }
 
 

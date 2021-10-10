@@ -45,27 +45,30 @@ public class Parking {
        
     public void addon(Vehicle run){
         
-        Vehicle carro= run;
-       
-        if(recent==null){
-        recent=list.getFirst();
-        }   
-        for(int i = 0; i <=5 ; i++ ){
-            
-            Node currentRigth = Parking.this.getRecent();
-            Node currentLeaft = Parking.this.getRecent();
+        Vehicle carro = run;
         
-            if(currentRigth.getCar()==null || currentRigth.getCar()=="Is empty"){
+        if(recent==null){
+            
+            recent=list.getFirst(); 
+        }
+        
+        Node currentRigth = Parking.this.getRecent();
+        Node currentLeaft = Parking.this.getRecent();      
+        
+        for(int i = 0; i <=5 ; i++ ){
+
+            if(currentRigth.getCar()==null /*currentRigth.getCar()=="Is empty"*/){
 
             	recent=currentRigth;
-                recent.setCar(run);
-                return;
-            }
+                recent.setCar(carro);
+                return; 
+            }  
             currentRigth=currentRigth.getNext();
+            
 
-            if(currentLeaft.getCar()==null || currentLeaft.getCar()=="Is empty"){
+            if(currentLeaft.getCar()==null /* currentLeaft.getCar()=="Is empty"*/){
             	recent=currentLeaft;
-                recent.setCar(run);
+                recent.setCar(carro);
                 return;
             }
              currentLeaft=currentLeaft.getPreviuos();
@@ -73,31 +76,40 @@ public class Parking {
         }
                
         System.out.println("Parking is full");
-/*
-        if(reccent == null){
-            
-            
-            recent = list.getFirst();
-            
-        }
-        for(int i = 0; i <=5 ; i++ ){
-      
-            if(currentRigth.getCar() == null){
-                recent = (Node) currentRigth.getCar();
-                recent.setCar(run);
-                return;
-            }
-            currentRigth = currentRigth.getNext();
 
-            if(currentLeaft.getCar() == null){
-                recent = (Node) currentLeaft.getCar();
-                recent.setCar(run);
-                return;
-            }
-            currentLeaft = currentLeaft.getPreviuos();
-            
-            System.out.println("Parking is full");
-        }
-    }*/
+    }
+    
 
-}}
+    public void deletebyPlaque(String plaque){
+        
+        Node comparate = list.getFirst();        
+        String del = plaque;
+        
+        for(int i=0; i<=10;i++){
+            Vehicle compar = (Vehicle) comparate.getCar();
+            if(compar.getPlaque().equals(del) ){
+            
+               comparate.setCar(null);
+               recent = comparate; 
+               return; 
+            }
+        }
+        System.out.println("that car  is not here");       
+    }
+    public void deletebyID(int id){
+        
+       Node comparateId = list.getFirst();
+       int del = id;
+       
+       for (int i=0; i<=10; i++){
+           Vehicle compar = (Vehicle) comparateId.getCar() ;
+           Person people = compar.getOwner();
+           if(people.getId() == del){
+               comparateId.setCar(null);
+               recent = comparateId;
+               return;
+           }
+       }
+        System.out.println("that car is not here");
+    }
+}

@@ -55,8 +55,12 @@ public class Main {
         newparq.addon(car9);
         newparq.addon(car10);
         
-        System.out.println(newparq.getList().getFirst().getCar());
+        //System.out.println(newparq.getList().getFirst().getCar());
+        //System.out.println(newparq.getList().getFirst().getNext().getCar());
+        newparq.getList().print();
         
+        newparq.deletebyID(12456);
+        newparq.getList().print();
     }
 }
 

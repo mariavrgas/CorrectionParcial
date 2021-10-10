@@ -21,6 +21,10 @@ public class Node<T extends Comparable<T>>{
         
     }
 
+    Node() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public T getCar() {
         return car;
     }
